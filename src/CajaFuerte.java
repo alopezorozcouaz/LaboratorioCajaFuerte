@@ -60,4 +60,66 @@ public class CajaFuerte {
             System.out.println("La caja ya esta cerrada");
         }
     }
+
+    /**
+     * permite depositar una cantidad
+     * a la caja fuerte
+     * @param cantidad
+     */
+    public void depositar(double cantidad){
+        if (!estado){
+            System.out.println("Primero abre la caja");
+            return;
+        }
+
+        if (cantidad <= 0 || saldoActual + cantidad > capacidadMaxima){
+            System.out.println("Depósito no permitido");
+            return;
+        }
+
+        saldoActual += cantidad;
+        System.out.println("Depósito realizado");
+    }
+
+    /**
+     * Permite retirar una cantidad de la caja
+     * @param cantidad
+     */
+    public void retirar(double cantidad){
+        if (!estado){
+            System.out.println("Primero abre la caja");
+            return;
+        }
+
+        if (cantidad <=0 || cantidad > saldoActual){
+            System.out.println("Retiro no permitido");
+            return;
+        }
+
+        saldoActual -= cantidad;
+        System.out.println("Retiro realizado");
+    }
+
+    /**
+     * impresión de los datos de la caja
+     */
+    public void mostrarEstado(){
+        System.out.println("Modelo: " + modelo);
+        System.out.println("Numero Serie: " + numeroSerie);
+        System.out.print("La caja esta: " );
+
+        if (estado){
+            System.out.println("abierta");
+        }else{
+            System.out.println("cerrada");
+        }
+
+        System.out.println("Intentos fallidos: " + intentosFallidos);
+
+        if (estado){
+            System.out.println("Saldo: " + saldoActual);
+        }else{
+            System.out.println("Saldo: información protegida");
+        }
+    }
 }

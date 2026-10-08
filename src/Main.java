@@ -8,9 +8,13 @@ public class Main {
 
         System.out.println("Caja fuerte creada correctamente");
 
-        // prueba con escenario invalido
-        caja.abrir(2344);
-        caja.abrir(2348);
-        caja.abrir(2383);
+        // prueba final
+        caja.abrir(1234);
+        caja.depositar(1500);
+        caja.retirar(500);
+        caja.mostrarEstado();
+        caja.cerrar();
+
+        caja.depositar(2000);
     }
 }
