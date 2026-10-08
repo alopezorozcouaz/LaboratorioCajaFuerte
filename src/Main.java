@@ -7,5 +7,10 @@ public class Main {
                 1234, 50000.0);
 
         System.out.println("Caja fuerte creada correctamente");
+
+        // prueba con escenario invalido
+        caja.abrir(2344);
+        caja.abrir(2348);
+        caja.abrir(2383);
     }
 }

@@ -14,4 +14,50 @@ public class CajaFuerte {
         this.claveAcceso = claveAcceso;
         this.capacidadMaxima = capacidadMaxima;
     }
+
+    /**
+     * Permite mediante una clave valida
+     * abrir la caja, después de tres intentos
+     * erroneos se bloquea la caja
+     * @param claveIngresada
+     */
+    public void abrir(int claveIngresada){
+        if (intentosFallidos >= 3){
+            System.out.println("Caja fuerte bloqueada");
+            return;
+        }
+
+        if (estado){ // si ya esta abierta manda un mensaje
+            System.out.println("La caja fuerte ya esta abierta");
+            return;
+        }
+
+        if (claveIngresada == claveAcceso){
+            estado = true; // la caja ha sido abierta
+            intentosFallidos = 0;
+            System.out.println("Acceso autorizado");
+        }else{
+            intentosFallidos++; // suma 1 a intentosFallidos
+
+            System.out.println("Clave incorrecta. Intentos restantes: " +
+                    (3 - intentosFallidos));
+
+            if (intentosFallidos >= 3) {
+                estado = false;
+                System.out.println("Caja fuerte bloqueada");
+            }
+        }
+    }
+
+    /**
+     * Cierra la caja si esta abierta
+     */
+    public void cerrar(){
+        if (estado){
+            estado = false;
+            System.out.println("Se ha cerrado la caja");
+        }else{
+            System.out.println("La caja ya esta cerrada");
+        }
+    }
 }
